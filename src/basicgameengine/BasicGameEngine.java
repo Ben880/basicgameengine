@@ -17,6 +17,7 @@ public class BasicGameEngine
     public static boolean gamerunning = true;
     public static ArrayList<GameObject> gameObjects = new ArrayList();
     public static GameLoop gl;
+    public static GameLoop gu;
 
     /**
      * @param args the command line arguments
@@ -28,7 +29,7 @@ public class BasicGameEngine
         // TODO create this in neww thread
         gl = new GameLoop(gameObjects);
         // TODO create this in neww thread
-        gl = new GameLoop(gameObjects);
+        gu = new UpdateLoop(gameObjects);
 
     }
 
