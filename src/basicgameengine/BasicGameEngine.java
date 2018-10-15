@@ -27,9 +27,11 @@ public class BasicGameEngine
         // TODO code application gui here
 
         // TODO create this in neww thread
-        gl = new GameLoop(gameObjects);
+        Thread t1 = new Thread(gl = new GameLoop(gameObjects));
+        t1.start();
         // TODO create this in neww thread
-        gu = new UpdateLoop(gameObjects);
+        Thread t2 = new Thread(gu = new UpdateLoop(gameObjects));
+        t2.start();
 
     }
 
