@@ -30,8 +30,8 @@ public class BasicGameEngine
         Thread t1 = new Thread(gl = new GameLoop(gameObjects));
         t1.start();
         // TODO create this in neww thread
-        Thread t2 = new Thread(gu = new UpdateLoop(gameObjects));
-        t2.start();
+//        Thread t2 = new Thread(gu = new UpdateLoop(gameObjects));
+//        t2.start();
 
     }
 
