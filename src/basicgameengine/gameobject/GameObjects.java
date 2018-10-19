@@ -1,4 +1,4 @@
-package basicgameengine;
+package basicgameengine.gameobject;
 
 import java.util.ArrayList;
 

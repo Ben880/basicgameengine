@@ -5,6 +5,9 @@
  */
 package basicgameengine;
 
+import Demo.Square;
+import basicgameengine.gameobject.GameObjects;
+
 /**
  *
  * @author bmwla
@@ -39,5 +42,7 @@ public class BasicGameEngine
             }
         };
         t2.start();
+
+        new GameObjects().addObject(new Square());
     }
 }

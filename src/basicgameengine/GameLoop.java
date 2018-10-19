@@ -1,5 +1,7 @@
 package basicgameengine;
 
+import basicgameengine.gameobject.GameObjects;
+
 /*
     BenjaminWilcox
     Oct 14, 2018

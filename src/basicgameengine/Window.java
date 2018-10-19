@@ -1,10 +1,13 @@
 package basicgameengine;
 
+import basicgameengine.gameobject.GameObjects;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
 import javafx.stage.Stage;
@@ -17,23 +20,29 @@ import javafx.stage.Stage;
 public class Window extends Application
 {
 
-    private static Canvas canvas = new Canvas(300, 250);
+    private static Canvas canvas = new Canvas(800, 800);
     private static GraphicsContext gc = canvas.getGraphicsContext2D();
     private static Running run = new Running();
+    private static StackPane holder = new StackPane();
+    private static GameObjects gameObjects = new GameObjects();
 
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        primaryStage.setTitle("Drawing Operations Test");
+        holder.setStyle("-fx-background-color: black");
+        primaryStage.setTitle("Drawing Test");
         Group root = new Group();
         drawShapes(gc);
-        root.getChildren().add(canvas);
+        root.getChildren().add(holder);
+        holder.getChildren().add(canvas);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
     }
 
     private void drawShapes(GraphicsContext gc)
     {
+
         gc.setFill(Color.GREEN);
         gc.setStroke(Color.BLUE);
         gc.setLineWidth(5);
@@ -72,6 +81,19 @@ public class Window extends Application
                 {
                     210, 210, 240, 240
                 }, 4);
+
+        new AnimationTimer()
+        {
+            public void handle(long currentNanoTime)
+            {
+                // background image clears canvas
+                for (int i = 0; i < gameObjects.size(); i++)
+                {
+                    gameObjects.get(i).updateGC(gc);
+                }
+            }
+        }.start();
+
     }
 
     @Override
