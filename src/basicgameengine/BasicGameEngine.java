@@ -5,8 +5,6 @@
  */
 package basicgameengine;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author bmwla
@@ -14,40 +12,32 @@ import java.util.ArrayList;
 public class BasicGameEngine
 {
 
-    public static boolean gamerunning = true;
-    public static ArrayList<GameObject> gameObjects = new ArrayList();
     public static GameLoop gl;
-    public static UpdateLoop gu;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args)
     {
-        // TODO code application gui here
-
-        // TODO create this in neww thread
-        Thread t1 = new Thread(gl = new GameLoop(gameObjects));
+        //game loop thread
+        Thread t1 = new Thread()
+        {
+            @Override
+            public void run()
+            {
+                gl = new GameLoop();
+            }
+        };
         t1.start();
-        // TODO create this in neww thread
-//        Thread t2 = new Thread(gu = new UpdateLoop(gameObjects));
-//        t2.start();
-
+        // create new window
+        Thread t2 = new Thread()
+        {
+            @Override
+            public void run()
+            {
+                javafx.application.Application.launch(Window.class);
+            }
+        };
+        t2.start();
     }
-
-    public void addGameObject(GameObject gameObject)
-    {
-        gameObjects.add(gameObject);
-    }
-
-    public void tickLoop()
-    {
-
-    }
-
-    public void updateObjects()
-    {
-
-    }
-
 }

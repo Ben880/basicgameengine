@@ -12,15 +12,25 @@ public class GameObject
 
     private int xpos = 0;
     private int ypos = 0;
-    private GraphicsContext gc;
+    private static GraphicsContext gc;
     private int moveToX = 0;
     private int moveToY = 0;
 
-    public GameObject(GraphicsContext gc, int xpos, int ypos)
+    public GameObject(int xpos, int ypos)
     {
-        this.gc = gc;
         this.xpos = xpos;
         this.ypos = ypos;
+    }
+
+    public GameObject()
+    {
+        this.xpos = 0;
+        this.ypos = 0;
+    }
+
+    public void setCanvas(GraphicsContext gc)
+    {
+        this.gc = gc;
     }
 
     public void setYpos(int ypos)
@@ -48,7 +58,7 @@ public class GameObject
         //update graphics context here
     }
 
-    public void updatePos()
+    public void update()
     {
         //do logic to incriment game objects location to desired locaion
     }
