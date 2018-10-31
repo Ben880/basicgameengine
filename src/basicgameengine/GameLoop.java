@@ -11,7 +11,7 @@ public class GameLoop implements Runnable
 {
 
     private final long SECOND = 1000;
-    private final long UPDATETIME = 100 / 6;
+    private final long UPDATETIME = 1000 / 60;
 
     private Time time = new Time();
     private Running run = new Running();
@@ -20,6 +20,7 @@ public class GameLoop implements Runnable
     public int loopCounter = 0;
     public long loopDelta = 0;
     public long updateDelta = 0;
+    public int updateCounter = 0;
 
     public GameLoop()
     {
@@ -34,18 +35,21 @@ public class GameLoop implements Runnable
             // loops per second counter
             if (loopDelta > SECOND)
             {
-                System.out.println("FPS: " + loopCounter);
+                time.setUPS(updateCounter);
                 loopCounter = 0;
                 loopDelta = 0;
+                updateCounter = 0;
             }
             updateDelta += time.deltaTime();
             //pudates couter
             if (updateDelta > UPDATETIME)
             {
+                updateCounter++;
                 for (int i = 0; i < gameObjects.size(); i++)
                 {
                     gameObjects.get(i).update();
                 }
+                updateDelta = 0;
             }
         }
 

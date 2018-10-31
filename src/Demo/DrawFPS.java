@@ -2,25 +2,22 @@ package Demo;
 
 import basicgameengine.Time;
 import basicgameengine.gameobject.GameObject;
-import basicgameengine.gameobject.Pos;
-import basicgameengine.gameobject.Speed;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 
 /*
     BenjaminWilcox
-    Oct 18, 2018
+    Oct 30, 2018
     BasicGameEngine
  */
-public class Square extends GameObject
+public class DrawFPS extends GameObject
 {
 
-    private static boolean init = false;
-    private Pos pos = new Pos();
-    private Speed speed = new Speed();
-    private static Time time = new Time();
+    private Time time = new Time();
 
-    public Square()
+    public DrawFPS()
     {
         speed.setAngle(0);
         speed.setSpeed((float) .1);
@@ -34,9 +31,11 @@ public class Square extends GameObject
     {
         if (init)
         {
-            gc.setFill(Color.GREEN);
-            gc.fillRoundRect(pos.getX(), pos.getY(), 30, 30, 10, 10);
-            System.out.println("Square Pos: " + pos.getX() + ", " + pos.getY());
+            gc.setLineWidth(1.0);
+            gc.setFill(Color.WHITE);
+            gc.setFont(new Font(15));
+            gc.setTextAlign(TextAlignment.RIGHT);
+            gc.strokeText("UPS: " + time.getUPS(), 785, 15, 100);
         }
 
     }
@@ -44,10 +43,8 @@ public class Square extends GameObject
     @Override
     public void update()
     {
-
         if (init)
         {
-
             pos.addX((float) (time.deltaTime() * speed.speed() * Math.cos(speed.angle() * Math.PI / 180)));
             pos.addY((float) (time.deltaTime() * speed.speed() * Math.sin(speed.angle() * Math.PI / 180)));
         }

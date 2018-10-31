@@ -5,6 +5,7 @@
  */
 package basicgameengine;
 
+import Demo.DrawFPS;
 import Demo.Square;
 import basicgameengine.gameobject.GameObjects;
 
@@ -44,5 +45,6 @@ public class BasicGameEngine
         t2.start();
 
         new GameObjects().addObject(new Square());
+        new GameObjects().addObject(new DrawFPS());
     }
 }

@@ -86,10 +86,11 @@ public class Window extends Application
         {
             public void handle(long currentNanoTime)
             {
+                gc.clearRect(0, 0, 800, 800);
                 // background image clears canvas
                 for (int i = 0; i < gameObjects.size(); i++)
                 {
-                    gc.clearRect(0, 0, 800, 800);
+
                     gameObjects.get(i).updateGC(gc);
 
                 }

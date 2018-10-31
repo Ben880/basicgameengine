@@ -11,6 +11,7 @@ public class Time
     private static long time = System.currentTimeMillis();
     private static long previous = System.currentTimeMillis();
     private static long deltaTime = 0;
+    private static int UPS = 0;
 
     public Time()
     {
@@ -28,6 +29,16 @@ public class Time
     public long deltaTime()
     {
         return deltaTime;
+    }
+
+    public int getUPS()
+    {
+        return UPS;
+    }
+
+    public void setUPS(int i)
+    {
+        UPS = i;
     }
 
 }

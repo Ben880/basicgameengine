@@ -10,9 +10,9 @@ import javafx.scene.canvas.GraphicsContext;
 public class GameObject
 {
 
-    static boolean init = false;
-    Pos pos = new Pos();
-    Speed speed = new Speed();
+    static public boolean init = false;
+    public Pos pos = new Pos();
+    public Speed speed = new Speed();
 
     public GameObject(int xpos, int ypos)
     {
