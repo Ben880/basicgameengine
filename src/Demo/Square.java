@@ -1,5 +1,6 @@
 package Demo;
 
+import basicgameengine.Time;
 import basicgameengine.gameobject.GameObject;
 import basicgameengine.gameobject.Pos;
 import basicgameengine.gameobject.Speed;
@@ -14,14 +15,15 @@ import javafx.scene.paint.Color;
 public class Square extends GameObject
 {
 
-    static boolean init = false;
-    Pos pos = new Pos();
-    Speed speed = new Speed();
+    private static boolean init = false;
+    private Pos pos = new Pos();
+    private Speed speed = new Speed();
+    private static Time time = new Time();
 
     public Square()
     {
         speed.setAngle(0);
-        speed.setSpeed((float) .0001);
+        speed.setSpeed((float) .1);
         pos.setXpos(400);
         pos.setYpos(400);
         init = true;
@@ -44,8 +46,8 @@ public class Square extends GameObject
     {
         if (init)
         {
-            pos.addX((float) (speed.speed() * Math.cos(speed.angle() * Math.PI / 180)));
-            pos.addY((float) (speed.speed() * Math.sin(speed.angle() * Math.PI / 180)));
+            pos.addX((float) (time.deltaTime() * speed.speed() * Math.cos(speed.angle() * Math.PI / 180)));
+            pos.addY((float) (time.deltaTime() * speed.speed() * Math.sin(speed.angle() * Math.PI / 180)));
         }
     }
 
