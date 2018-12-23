@@ -6,6 +6,7 @@
 package basicgameengine;
 
 import Demo.DrawFPS;
+import Demo.SpriteTest;
 import Demo.Square;
 import basicgameengine.gameobject.GameObjects;
 
@@ -46,5 +47,6 @@ public class BasicGameEngine
 
         new GameObjects().addObject(new Square());
         new GameObjects().addObject(new DrawFPS());
+        new GameObjects().addObject(new SpriteTest());
     }
 }

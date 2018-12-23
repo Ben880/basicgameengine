@@ -1,5 +1,6 @@
 package basicgameengine.gameobject;
 
+import basicgameengine.Time;
 import javafx.scene.canvas.GraphicsContext;
 
 /*
@@ -10,9 +11,11 @@ import javafx.scene.canvas.GraphicsContext;
 public class GameObject
 {
 
+    private static Time time = new Time();
     static public boolean init = false;
     public Pos pos = new Pos();
     public Speed speed = new Speed();
+    public SpriteController spriteController = new SpriteController();
 
     public GameObject(int xpos, int ypos)
     {
@@ -40,13 +43,14 @@ public class GameObject
 
     public void updateGC(GraphicsContext gc)
     {
-        //update graphics context here
+        if (spriteController.isEnabled())
+        {
+            spriteController.updateGC(gc, (int) pos.getX(), (int) pos.getY());
+        }
     }
 
     public void update()
     {
-//        x = r * cos(a)
-//        y = r * sin(a)
         if (init)
         {
             pos.addX((float) (speed.speed() * Math.cos(speed.angle())));

@@ -36,7 +36,7 @@ public class Square extends GameObject
         {
             gc.setFill(Color.GREEN);
             gc.fillRoundRect(pos.getX(), pos.getY(), 30, 30, 10, 10);
-            System.out.println("Square Pos: " + pos.getX() + ", " + pos.getY());
+            //System.out.println("Square Pos: " + pos.getX() + ", " + pos.getY());
         }
 
     }
